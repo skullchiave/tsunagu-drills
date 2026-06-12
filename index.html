@@ -74,6 +74,9 @@ footer{text-align:center;color:var(--sub);font-size:12px;padding:24px 16px;line-
 .qrclose{margin-top:22px;background:#eef2f8;color:var(--ink);border:1px solid var(--line);border-radius:12px;
   padding:12px 30px;font-size:16px;font-weight:800;font-family:inherit;cursor:pointer;}
 .qrclose:active{transform:scale(.97);}
+
+/* QRは投影（広い幅＝先生のPC）専用。スマホ幅では隠し、学生の手元を再配布ボタン化させない＝拡散に小さな摩擦 */
+@media (max-width:640px){ .qrbtn{display:none;} }
 </style>
 </head>
 <body>

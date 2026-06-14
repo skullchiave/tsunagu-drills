@@ -18,7 +18,7 @@
   --ok:#15803d; --ng:#dc2626; --accent:#e8920c; --accentT:#b45309;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-html,body{height:100%;}
+html,body{height:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
 body{font-family:"Yu Gothic UI","Yu Gothic","Meiryo",sans-serif;background:var(--bg);color:var(--ink);
   display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%;-webkit-user-select:none;user-select:none;}
 /* nav */
@@ -161,6 +161,7 @@ kbd{background:#e2e8f0;color:var(--ink);border-radius:5px;padding:2px 9px;font-s
   #sort .hintbar .hc{font-size:12px;padding:3px 8px;}
   #sort .hinttoggle{padding:6px 11px;font-size:12px;}
 }
+.fitwrap{display:flex;flex-direction:column;align-items:center;justify-content:center;white-space:nowrap;transform-origin:center;}
 </style>
 </head>
 <body>
@@ -424,6 +425,33 @@ document.addEventListener('keydown',e=>{
   if(cur==='rhythm'&&(e.key===' '||e.key==='ArrowRight')){e.preventDefault();rStep();}
   if(cur==='sort'&&(e.key===' '||e.key==='ArrowRight')){e.preventDefault();document.getElementById('sortnext').click();}
 });
+
+/* めくり: iOS文字拡大や長い語でカードからはみ出す時、自動で縮めてカード内に収める保険 */
+(function(){
+  var grid=document.getElementById('flipgrid');
+  if(!grid) return;
+  function fitOne(face){
+    var wrap=face.querySelector(':scope > .fitwrap');
+    if(!wrap){
+      wrap=document.createElement('span'); wrap.className='fitwrap';
+      while(face.firstChild) wrap.appendChild(face.firstChild);
+      face.appendChild(wrap);
+    }
+    wrap.style.transform='';
+    var cw=face.clientWidth, ch=face.clientHeight, sw=wrap.scrollWidth, sh=wrap.scrollHeight;
+    if(!cw||!sw) return;                 /* 非表示中(0px)はスキップ */
+    var s=Math.min(cw/sw, ch/sh, 1);
+    if(s<0.99) wrap.style.transform='scale('+(s*0.96).toFixed(3)+')';
+  }
+  function fit(){ requestAnimationFrame(function(){ grid.querySelectorAll('.face').forEach(fitOne); }); }
+  new MutationObserver(fit).observe(grid,{childList:true});
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ if(es.some(function(e){return e.isIntersecting;})) fit(); }).observe(grid);
+  }
+  window.addEventListener('resize',fit);
+  window.addEventListener('orientationchange',fit);
+  fit();
+})();
 </script>
 </body>
 </html>

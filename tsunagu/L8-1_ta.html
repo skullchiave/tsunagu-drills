@@ -140,6 +140,25 @@ kbd{background:#e2e8f0;color:var(--ink);border-radius:5px;padding:2px 9px;font-s
   .rcount{bottom:14px;right:16px;font-size:13px;}
   .pill{font-size:16px;padding:3px 14px;}
 }
+
+/* sort1gamen: 3分類画面(#sort)を1画面に収める＝スクロールなし（640px以下） */
+@media (max-width:640px){
+  #sort h2{margin-bottom:2px;}
+  #sort h2 span{margin-top:1px;}
+  #sort .score{position:absolute;top:10px;right:14px;align-self:auto;margin:0;}
+  #sort .sortwrap{gap:7px;justify-content:space-evenly;padding-top:2px;}
+  #sort .qcard{font-size:clamp(22px,6.5vw,32px);padding:10px 12px;}
+  #sort .qcard .gl{font-size:11px;margin-top:5px;}
+  #sort .choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:7px;width:100%;max-width:360px;}
+  #sort .choices button{width:auto;min-width:0;padding:11px 6px;font-size:15px;white-space:nowrap;}
+  #sort .fb{font-size:15px;min-height:22px;}
+  #sort .sortbtns{gap:7px;}
+  #sort .sortbtns button{padding:7px 11px;font-size:13px;}
+  #sort .task{font-size:17px;padding:5px 16px;}
+  #sort .hintbar{gap:5px;}
+  #sort .hintbar .hc{font-size:12px;padding:3px 8px;}
+  #sort .hinttoggle{padding:6px 11px;font-size:12px;}
+}
 </style>
 </head>
 <body>

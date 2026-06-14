@@ -164,6 +164,10 @@ kbd{background:#e2e8f0;color:var(--ink);border-radius:5px;padding:2px 9px;font-s
   #sort .hinttoggle{padding:6px 11px;font-size:12px;}
 }
 .fitwrap{display:flex;flex-direction:column;align-items:center;justify-content:center;white-space:nowrap;transform-origin:center;}
+/* ③ 2・3グループ結合ボタンを2行で収める（見切れ対策） */
+.choices .c3{line-height:1.12;}
+.choices .c3 .opt-big{display:block;}
+.choices .c3 .opt-sub{display:block;font-size:.6em;font-weight:800;margin-top:1px;}
 </style>
 </head>
 <body>
@@ -238,7 +242,7 @@ kbd{background:#e2e8f0;color:var(--ink);border-radius:5px;padding:2px 9px;font-s
       <button class="c1" data-e="いた">いた</button>
       <button class="c1" data-e="いだ">いだ</button>
       <button class="c1" data-e="した">した</button>
-      <button class="c3" data-e="た">た（2グループ・3グループ）</button>
+      <button class="c3" data-e="た"><span class="opt-big">た</span><span class="opt-sub">（2・3グループ）</span></button>
     </div>
     <div class="fb" id="sortfb"></div>
     <div class="sortbtns">

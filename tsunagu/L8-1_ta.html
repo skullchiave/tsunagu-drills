@@ -13,7 +13,7 @@
 <title>つなぐ L8-1 た形ドリル</title>
 <style>
 :root{
-  --g1:#dc2626; --g2:#1d4ed8; --g3:#15803d;   /* 1G=赤(最複雑・最重要) / 2G=青 / 3G=緑 */
+  --g1:#dc2626; --g2:#1d4ed8; --g3:#15803d;   /* 1グループ=赤(最複雑・最重要) / 2グループ=青 / 3グループ=緑 */
   --bg:#eef1f7; --panel:#ffffff; --ink:#16233a; --sub:#5a6b86; --line:#c9d4e6;
   --ok:#15803d; --ng:#dc2626; --accent:#e8920c; --accentT:#b45309;
 }
@@ -212,7 +212,7 @@ kbd{background:#e2e8f0;color:var(--ink);border-radius:5px;padding:2px 9px;font-s
       <button class="c1" data-e="いた">いた</button>
       <button class="c1" data-e="いだ">いだ</button>
       <button class="c1" data-e="した">した</button>
-      <button class="c3" data-e="た">た（2G・3G）</button>
+      <button class="c3" data-e="た">た（2グループ・3グループ）</button>
     </div>
     <div class="fb" id="sortfb"></div>
     <div class="sortbtns">
@@ -245,7 +245,7 @@ const VERBS=[
   {m:"まちます",ta:"まった",g:1,e:"った"},
   {m:"もちます",ta:"もった",g:1,e:"った"},
   {m:"とります",ta:"とった",g:1,e:"った"},
-  {m:"かえります",ta:"かえった",g:1,e:"った",ex:"い<ruby>段<rt>だん</rt></ruby>だけど1G"},
+  {m:"かえります",ta:"かえった",g:1,e:"った",ex:"い<ruby>段<rt>だん</rt></ruby>だけど1グループ"},
   {m:"あります",ta:"あった",g:1,e:"った"},
   // んだ（に・び・み）
   {m:"のみます",ta:"のんだ",g:1,e:"んだ"},
@@ -263,9 +263,9 @@ const VERBS=[
   {m:"けします",ta:"けした",g:1,e:"した"},
   // た（2グループ）
   {m:"たべます",ta:"たべた",g:2,e:"た"},
-  {m:"みます",ta:"みた",g:2,e:"た",ex:"い<ruby>段<rt>だん</rt></ruby>だけど2G"},
+  {m:"みます",ta:"みた",g:2,e:"た",ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ"},
   {m:"あけます",ta:"あけた",g:2,e:"た"},
-  {m:"おきます",ta:"おきた",g:2,e:"た",ex:"い<ruby>段<rt>だん</rt></ruby>だけど2G"},
+  {m:"おきます",ta:"おきた",g:2,e:"た",ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ"},
   // た（3グループ）
   {m:"きます",ta:"きた",g:3,e:"た",ex:"くる→きた"},
   {m:"します",ta:"した",g:3,e:"た"},
@@ -335,7 +335,7 @@ function flipDeal(){
     const c=document.createElement('div');c.className='fcard';
     c.innerHTML=`<div class="fin">
       <div class="face front">${v.m}</div>
-      <div class="face back"><span class="ta">${v.ta}</span><span class="gl gl${v.g}">${GNAME[v.g]}${v.ex?' ⚠':''}</span></div>
+      <div class="face back"><span class="ta">${v.ta}</span><span class="gl gl${v.g}">${GNAME[v.g]}</span></div>
     </div>`;
     c.onclick=()=>c.classList.toggle('flip');
     fg.appendChild(c);

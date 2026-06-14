@@ -13,7 +13,7 @@
 <title>つなぐ L7-1 普通形（辞書形）ドリル</title>
 <style>
 :root{
-  --g1:#dc2626; --g2:#1d4ed8; --g3:#15803d;   /* 1G=赤(最複雑・最重要) / 2G=青 / 3G=緑 */
+  --g1:#dc2626; --g2:#1d4ed8; --g3:#15803d;   /* 1グループ=赤(最複雑・最重要) / 2グループ=青 / 3グループ=緑 */
   --bg:#eef1f7; --panel:#ffffff; --ink:#16233a; --sub:#5a6b86; --line:#c9d4e6;
   --ok:#15803d; --ng:#dc2626; --accent:#e8920c; --accentT:#b45309;
 }
@@ -229,10 +229,10 @@ const VERBS=[
   {m:"いきます",d:"いく",g:1},{m:"かきます",d:"かく",g:1},{m:"ききます",d:"きく",g:1},
   {m:"のみます",d:"のむ",g:1},{m:"よみます",d:"よむ",g:1},{m:"はなします",d:"はなす",g:1},
   {m:"あります",d:"ある",g:1},{m:"あいます",d:"あう",g:1},{m:"とります",d:"とる",g:1},
-  {m:"すわります",d:"すわる",g:1},{m:"かえります",d:"かえる",g:1,ex:"い<ruby>段<rt>だん</rt></ruby>だけど1G"},
+  {m:"すわります",d:"すわる",g:1},{m:"かえります",d:"かえる",g:1,ex:"い<ruby>段<rt>だん</rt></ruby>だけど1グループ"},
   {m:"たべます",d:"たべる",g:2},{m:"ねます",d:"ねる",g:2},{m:"あけます",d:"あける",g:2},
-  {m:"しめます",d:"しめる",g:2},{m:"みます",d:"みる",g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2G"},
-  {m:"います",d:"いる",g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2G"},{m:"おきます",d:"おきる",g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2G"},
+  {m:"しめます",d:"しめる",g:2},{m:"みます",d:"みる",g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ"},
+  {m:"います",d:"いる",g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ"},{m:"おきます",d:"おきる",g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ"},
   {m:"きます",d:"くる",g:3},{m:"します",d:"する",g:3},
   {m:"せつめいします",d:"せつめいする",g:3},{m:"さんぽします",d:"さんぽする",g:3}
 ];
@@ -300,7 +300,7 @@ function flipDeal(){
     const c=document.createElement('div');c.className='fcard';
     c.innerHTML=`<div class="fin">
       <div class="face front">${v.m}</div>
-      <div class="face back"><span class="dic">${v.d}</span><span class="gl gl${v.g}">${GNAME[v.g]}${v.ex?' ⚠':''}</span></div>
+      <div class="face back"><span class="dic">${v.d}</span><span class="gl gl${v.g}">${GNAME[v.g]}</span></div>
     </div>`;
     c.onclick=()=>c.classList.toggle('flip');
     fg.appendChild(c);

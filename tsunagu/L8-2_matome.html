@@ -13,7 +13,7 @@
 <title>つなぐ L8-2 動詞の普通形まとめ（丁寧形⇔普通形）</title>
 <style>
 :root{
-  --g1:#dc2626; --g2:#1d4ed8; --g3:#15803d;   /* 1G=赤(最複雑・最重要) / 2G=青 / 3G=緑 */
+  --g1:#dc2626; --g2:#1d4ed8; --g3:#15803d;   /* 1グループ=赤(最複雑・最重要) / 2グループ=青 / 3グループ=緑 */
   --bg:#eef1f7; --panel:#ffffff; --ink:#16233a; --sub:#5a6b86; --line:#c9d4e6;
   --ok:#15803d; --ng:#dc2626; --accent:#e8920c; --accentT:#b45309;
 }
@@ -193,22 +193,22 @@ kbd{background:#e2e8f0;color:var(--ink);border-radius:5px;padding:2px 9px;font-s
       <th>〜ませんでした<small>⇒ なかった</small></th>
     </tr></thead>
     <tbody>
-      <tr class="pg1"><td class="w">かきます（1G）</td>
+      <tr class="pg1"><td class="w">かきます（1グループ）</td>
         <td><span class="pol">かきます</span><b>かく</b></td>
         <td><span class="pol">かきません</span><b>かかない</b></td>
         <td><span class="pol">かきました</span><b>かいた</b></td>
         <td><span class="pol">かきませんでした</span><b>かかなかった</b></td></tr>
-      <tr class="pg1"><td class="w">のみます（1G）</td>
+      <tr class="pg1"><td class="w">のみます（1グループ）</td>
         <td><span class="pol">のみます</span><b>のむ</b></td>
         <td><span class="pol">のみません</span><b>のまない</b></td>
         <td><span class="pol">のみました</span><b>のんだ</b></td>
         <td><span class="pol">のみませんでした</span><b>のまなかった</b></td></tr>
-      <tr class="pg2"><td class="w">たべます（2G）</td>
+      <tr class="pg2"><td class="w">たべます（2グループ）</td>
         <td><span class="pol">たべます</span><b>たべる</b></td>
         <td><span class="pol">たべません</span><b>たべない</b></td>
         <td><span class="pol">たべました</span><b>たべた</b></td>
         <td><span class="pol">たべませんでした</span><b>たべなかった</b></td></tr>
-      <tr class="pg3"><td class="w">します（3G）</td>
+      <tr class="pg3"><td class="w">します（3グループ）</td>
         <td><span class="pol">します</span><b>する</b></td>
         <td><span class="pol">しません</span><b>しない</b></td>
         <td><span class="pol">しました</span><b>した</b></td>
@@ -308,8 +308,8 @@ const VERBS=[
   {st:"いそぎ",pl:["いそぐ","いそがない","いそいだ","いそがなかった"],g:1},
   // 2グループ
   {st:"たべ",pl:["たべる","たべない","たべた","たべなかった"],g:2},
-  {st:"み",pl:["みる","みない","みた","みなかった"],g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2G"},
-  {st:"おき",pl:["おきる","おきない","おきた","おきなかった"],g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2G"},
+  {st:"み",pl:["みる","みない","みた","みなかった"],g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ"},
+  {st:"おき",pl:["おきる","おきない","おきた","おきなかった"],g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ"},
   // 3グループ
   {st:"き",pl:["くる","こない","きた","こなかった"],g:3,ex:"くる→こない・こなかった"},
   {st:"し",pl:["する","しない","した","しなかった"],g:3},
@@ -392,7 +392,7 @@ function flipDeal(){
     const rows=v.pl.map((fm,fi)=>`<div class="fr${fi===1||fi===3?' neg':''}"><span class="lb">${FNAME[fi]}</span><span class="fm">${fm}</span></div>`).join('');
     const c=document.createElement('div');c.className='fcard';
     c.innerHTML=`<div class="fin">
-      <div class="face front">${polite(v,0)}<span class="gl gl${v.g}">${GNAME[v.g]}${v.ex?' ⚠':''}</span></div>
+      <div class="face front">${polite(v,0)}<span class="gl gl${v.g}">${GNAME[v.g]}</span></div>
       <div class="face back">${rows}</div>
     </div>`;
     c.onclick=()=>c.classList.toggle('flip');

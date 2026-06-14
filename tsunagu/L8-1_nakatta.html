@@ -13,7 +13,7 @@
 <title>つなぐ L8-1 なかったドリル</title>
 <style>
 :root{
-  --g1:#dc2626; --g2:#1d4ed8; --g3:#15803d;   /* 1G=赤(最複雑・最重要) / 2G=青 / 3G=緑 */
+  --g1:#dc2626; --g2:#1d4ed8; --g3:#15803d;   /* 1グループ=赤(最複雑・最重要) / 2グループ=青 / 3グループ=緑 */
   --bg:#eef1f7; --panel:#ffffff; --ink:#16233a; --sub:#5a6b86; --line:#c9d4e6;
   --ok:#15803d; --ng:#dc2626; --accent:#e8920c; --accentT:#b45309;
 }
@@ -241,7 +241,7 @@ const VERBS=[
   {m:"まちません",k:"またなかった",g:1},
   {m:"もちません",k:"もたなかった",g:1},
   {m:"とりません",k:"とらなかった",g:1},
-  {m:"かえりません",k:"かえらなかった",g:1,ex:"い<ruby>段<rt>だん</rt></ruby>だけど1G"},
+  {m:"かえりません",k:"かえらなかった",g:1,ex:"い<ruby>段<rt>だん</rt></ruby>だけど1グループ"},
   {m:"ありません",k:"なかった",g:1,ex:"×あらなかった"},
   {m:"のみません",k:"のまなかった",g:1},
   {m:"よみません",k:"よまなかった",g:1},
@@ -256,9 +256,9 @@ const VERBS=[
   {m:"けしません",k:"けさなかった",g:1},
   // 2グループ
   {m:"たべません",k:"たべなかった",g:2},
-  {m:"みません",k:"みなかった",g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2G"},
+  {m:"みません",k:"みなかった",g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ"},
   {m:"あけません",k:"あけなかった",g:2},
-  {m:"おきません",k:"おきなかった",g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2G"},
+  {m:"おきません",k:"おきなかった",g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ"},
   // 3グループ
   {m:"きません",k:"こなかった",g:3,ex:"くる→こなかった"},
   {m:"しません",k:"しなかった",g:3},
@@ -328,7 +328,7 @@ function flipDeal(){
     const c=document.createElement('div');c.className='fcard';
     c.innerHTML=`<div class="fin">
       <div class="face front">${v.m}</div>
-      <div class="face back"><span class="nk">${v.k}</span><span class="gl gl${v.g}">${GNAME[v.g]}${v.ex?' ⚠':''}</span></div>
+      <div class="face back"><span class="nk">${v.k}</span><span class="gl gl${v.g}">${GNAME[v.g]}</span></div>
     </div>`;
     c.onclick=()=>c.classList.toggle('flip');
     fg.appendChild(c);

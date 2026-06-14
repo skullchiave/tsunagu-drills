@@ -13,7 +13,7 @@
 <title>つなぐ L9 て形ドリル</title>
 <style>
 :root{
-  --g1:#dc2626; --g2:#1d4ed8; --g3:#15803d;   /* 1G=赤(最複雑・最重要) / 2G=青 / 3G=緑 */
+  --g1:#dc2626; --g2:#1d4ed8; --g3:#15803d;   /* 1グループ=赤(最複雑・最重要) / 2グループ=青 / 3グループ=緑 */
   --bg:#eef1f7; --panel:#ffffff; --ink:#16233a; --sub:#5a6b86; --line:#c9d4e6;
   --ok:#15803d; --ng:#dc2626; --accent:#e8920c; --accentT:#b45309;
 }
@@ -227,7 +227,7 @@ kbd{background:#e2e8f0;color:var(--ink);border-radius:5px;padding:2px 9px;font-s
       <button class="c1" data-e="いて">いて</button>
       <button class="c1" data-e="いで">いで</button>
       <button class="c1" data-e="して">して</button>
-      <button class="c3" data-e="て">て（2G・3G）</button>
+      <button class="c3" data-e="て">て（2グループ・3グループ）</button>
     </div>
     <div class="fb" id="sortfb"></div>
     <div class="sortbtns">
@@ -253,7 +253,7 @@ kbd{background:#e2e8f0;color:var(--ink);border-radius:5px;padding:2px 9px;font-s
 // m=ます形, te=て形, g=group, e=て形の語尾(って/んで/いて/いで/して/て), sec=語彙スコープ, ex=メモ(任意)
 // sec: 0=既習(た形ドリルと同セット・音便全型の網羅用) / 1=9-1新出 / 2=9-2新出 / 3=9-3新出
 // スコープボタン「9-1」= sec0+1（て形導入は既習動詞でやるため既習を含む）。「＋9-2」「＋9-3」で累積追加
-// ※「おきます」は 置く(1G・おいて) と 起きる(2G・おきて) の同音衝突があるため（ほんを）（あさ）で区別する
+// ※「おきます」は 置く(1グループ・おいて) と 起きる(2グループ・おきて) の同音衝突があるため（ほんを）（あさ）で区別する
 const VERBS=[
   // ===== 既習（sec0）=====
   // って（い・ち・り）
@@ -263,7 +263,7 @@ const VERBS=[
   {m:"まちます",te:"まって",g:1,e:"って",sec:0},
   {m:"もちます",te:"もって",g:1,e:"って",sec:0},
   {m:"とります",te:"とって",g:1,e:"って",sec:0},
-  {m:"かえります",te:"かえって",g:1,e:"って",sec:0,ex:"い<ruby>段<rt>だん</rt></ruby>だけど1G"},
+  {m:"かえります",te:"かえって",g:1,e:"って",sec:0,ex:"い<ruby>段<rt>だん</rt></ruby>だけど1グループ"},
   {m:"あります",te:"あって",g:1,e:"って",sec:0},
   // んで（に・び・み）
   {m:"のみます",te:"のんで",g:1,e:"んで",sec:0},
@@ -281,15 +281,15 @@ const VERBS=[
   {m:"けします",te:"けして",g:1,e:"して",sec:0},
   // 2グループ
   {m:"たべます",te:"たべて",g:2,e:"て",sec:0},
-  {m:"みます",te:"みて",g:2,e:"て",sec:0,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2G"},
+  {m:"みます",te:"みて",g:2,e:"て",sec:0,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ"},
   {m:"あけます",te:"あけて",g:2,e:"て",sec:0},
-  {m:"（あさ）おきます",te:"おきて",g:2,e:"て",sec:0,ex:"おきる（2G）。（ほんを）おきます と べつ"},
+  {m:"（あさ）おきます",te:"おきて",g:2,e:"て",sec:0,ex:"おきる（2グループ）。（ほんを）おきます と べつ"},
   // 3グループ
   {m:"きます",te:"きて",g:3,e:"て",sec:0,ex:"くる→きて"},
   {m:"します",te:"して",g:3,e:"て",sec:0},
   {m:"べんきょうします",te:"べんきょうして",g:3,e:"て",sec:0},
   // ===== 9-1 新出（sec1）=====
-  {m:"（ほんを）おきます",te:"おいて",g:1,e:"いて",sec:1,ex:"おく（1G）。（あさ）おきます と べつ"},
+  {m:"（ほんを）おきます",te:"おいて",g:1,e:"いて",sec:1,ex:"おく（1グループ）。（あさ）おきます と べつ"},
   {m:"おぼえます",te:"おぼえて",g:2,e:"て",sec:1},
   {m:"さわります",te:"さわって",g:1,e:"って",sec:1},
   {m:"すてます",te:"すてて",g:2,e:"て",sec:1},
@@ -297,14 +297,14 @@ const VERBS=[
   {m:"はらいます",te:"はらって",g:1,e:"って",sec:1},
   {m:"まちがえます",te:"まちがえて",g:2,e:"て",sec:1},
   {m:"わすれます",te:"わすれて",g:2,e:"て",sec:1},
-  {m:"はいります",te:"はいって",g:1,e:"って",sec:1,ex:"い<ruby>段<rt>だん</rt></ruby>だけど1G"},
+  {m:"はいります",te:"はいって",g:1,e:"って",sec:1,ex:"い<ruby>段<rt>だん</rt></ruby>だけど1グループ"},
   {m:"でます",te:"でて",g:2,e:"て",sec:1},
   // ===== 9-2 新出（sec2）=====
   {m:"うんてんします",te:"うんてんして",g:3,e:"て",sec:2},
   {m:"（たばこを）すいます",te:"すって",g:1,e:"って",sec:2},
   {m:"つかいます",te:"つかって",g:1,e:"って",sec:2},
   {m:"とめます",te:"とめて",g:2,e:"て",sec:2},
-  {m:"はしります",te:"はしって",g:1,e:"って",sec:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど1G"},
+  {m:"はしります",te:"はしって",g:1,e:"って",sec:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど1グループ"},
   {m:"わたります",te:"わたって",g:1,e:"って",sec:2},
   {m:"コピーします",te:"コピーして",g:3,e:"て",sec:2},
   {m:"いれます",te:"いれて",g:2,e:"て",sec:2},
@@ -391,7 +391,7 @@ function flipDeal(){
     const c=document.createElement('div');c.className='fcard';
     c.innerHTML=`<div class="fin">
       <div class="face front">${v.m}</div>
-      <div class="face back"><span class="te">${v.te}</span><span class="gl gl${v.g}">${GNAME[v.g]}${v.ex?' ⚠':''}</span></div>
+      <div class="face back"><span class="te">${v.te}</span><span class="gl gl${v.g}">${GNAME[v.g]}</span></div>
     </div>`;
     c.onclick=()=>c.classList.toggle('flip');
     fg.appendChild(c);
